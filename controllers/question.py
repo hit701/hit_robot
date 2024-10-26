@@ -7,14 +7,15 @@ def data_input():
 
 def csv_data(user_name, kind, count):
     #
-    with open('../db/robots_data.csv', 'w', newline='') as csv_file:
+    with open('../db/robots_data.csv', 'a', newline='') as csv_file:
         fieldnames = ['user_name', 'robot_kind', 'count']
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-        writer.writeheader()
+        # writer.writeheader()
         writer.writerow({'user_name': user_name, 'robot_kind': kind, 'count': count})
         # writer.writerow({'user_name': user_name, 'robot_kind': kind, 'count': count})
-
-count = 2
-name = 'H'
-kind_robot = 'pretty'
-csv_data(name, kind_robot, count)
+#
+# seek_position = 2
+# count = 2
+# name = 'H'
+# kind_robot = 'pretty'
+# csv_data(name, kind_robot, count, seek_position)
