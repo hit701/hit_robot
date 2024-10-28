@@ -2,7 +2,9 @@ import csv
 
 def data_input():
     name = input('My name is Hit.  What is your name? \n')
+    name = name.capitalize()
     kind_robot = input(f'Hey. {name}. What kind of robot do you like? \n')
+    kind_robot = kind_robot.capitalize()
     return name, kind_robot
 
 def csv_data(user_name, kind, count):

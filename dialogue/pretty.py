@@ -8,11 +8,8 @@ from controllers import question
 
 def main():
     name, kind = question.data_input()
-    name = name.capitalize()
-    kind = kind.capitalize()
     question.csv_data(name, kind, 3)
     print('Thak you')
-
 
 
 if __name__ == '__main__':
