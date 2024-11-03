@@ -23,26 +23,13 @@ def recommend():
     return  max_user, max_kind, max_count
 
 # r = recommend()
-# print(r)
+# jprint(r)
 
 def count():
     """もしcsvファイルがなければ作成し終了する。
     もし、あれば、データからでヘッダーのみを作成してユーザーに返答する。"""
-    file = '../db/robots_data.csv'
-    r = os.path.isfile(file)
-    recommend_user = ''
-    recommend_kind = ''
-    count = 0
-    if r:
-        # user_name, robot_kindを分析し、一番頻度の高いuser_nameを提案する
-        recommend_user, recommend_kind, count = recommend()
-    else:
-        with open(file, 'w', newline='') as csv_file:
-            fieldnames = ['user_name', 'robot_kind', 'count']
-            writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-            writer.writeheader()
-        recommnend_user = None
-    
+    recommend_user, recommend_kind, count = recommend()
+
     return recommend_user, recommend_kind, count
 
 

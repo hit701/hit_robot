@@ -2,8 +2,12 @@ import csv
 
 def data_input():
     name = input('My name is Hit.  What is your name? \n')
+    if name is None:
+        return
     name = name.capitalize()
     kind_robot = input(f'Hey. {name}. What kind of robot do you like? \n')
+    if kind_robot is None:
+        return
     kind_robot = kind_robot.capitalize()
     return name, kind_robot
 
