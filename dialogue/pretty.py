@@ -16,12 +16,13 @@ def main():
     if user_name is None or robot_kind is None:
         print('Thank you')
         return
+    # elif user_name and robot_kind:
+    #
+    #     question.csv_data(user_name, robot_kind, 1)
+    #     print('Thank you')
     elif user_name and robot_kind:
-        question.csv_data(user_name, robot_kind, 1)
-        print('Thank you')
-    else:
         user, kind, count = count_and_recommend.count()
-        yes_or_no = input(f'We recommend {user} robot and {kind} kind.  do you like? ')
+        yes_or_no = input(f'We recommend {kind} charactor.  do you like? (Yes/y or No/n) \n')
         yes_or_no = yes_or_no.lower()
         if yes_or_no == 'y' or yes_or_no == 'yes':
             replace_data.write_update(user, kind)

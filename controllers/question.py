@@ -5,7 +5,7 @@ def data_input():
     if name is None:
         return
     name = name.capitalize()
-    kind_robot = input(f'Hey. {name}. What kind of robot do you like? \n')
+    kind_robot = input(f'Hey. {name}. What charactor of robot would you like? (ex. pretty) \n')
     if kind_robot is None:
         return
     kind_robot = kind_robot.capitalize()

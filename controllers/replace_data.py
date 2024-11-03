@@ -25,6 +25,7 @@ def write_update(user_name, robot_kind):
             if user == user_name and kind == robot_kind:
                 value += 1
                 writer.writerow({'user_name': user, 'robot_kind': kind, 'count': value})
-                continue
+                # value = int(3)
+                # writer.writerow({'user_name': user, 'robot_kind': kind, 'count': value})
 
 # write_update('Yuto', 'Kind')
