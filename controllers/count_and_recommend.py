@@ -2,8 +2,10 @@
 # If there are the highest point, recommend the user_name.
 import csv
 import os
+from controllers import question
+from controllers import replace_data
 from dialogue import pretty
-def recommend():
+def recommend(user_name, robot_kind):
     # user_name, robot_kindを分析し、一番頻度の高いuser_nameを提案する
     with open('../db/robots_data.csv', 'r', newline='') as csv_file:
             reader = csv.DictReader(csv_file)
@@ -16,19 +18,26 @@ def recommend():
                 kind = row['robot_kind']
                 count = row['count']
                 count = int(count)
-                if max_count < count:
-                    max_count = count
-                    max_user = user
-                    max_kind = kind
+                if user_name == user and robot_kind == kind:
+                    replace_data.write_update(user_name, robot_kind)
+                    break
+                # elif (user_name != user and robot_kind == kind) or (user_name == user and robot_kind != kind ):
+                #    question.csv_data(user_name, robot_kind, 1)
+                #    break
+                else:
+                    if max_count < count:
+                        max_count = count
+                        max_user = user
+                        max_kind = kind
     return  max_user, max_kind, max_count
 
 # r = recommend()
 # jprint(r)
 
-def count():
+def count(user_name, robot_kind):
     """もしcsvファイルがなければ作成し終了する。
     もし、あれば、データからでヘッダーのみを作成してユーザーに返答する。"""
-    recommend_user, recommend_kind, count = recommend()
+    recommend_user, recommend_kind, count = recommend(user_name, robot_kind)
 
     return recommend_user, recommend_kind, count
 

@@ -1,4 +1,6 @@
 import csv
+import controllers.question
+
 file_name = '../db/robots_data.csv'
 
 # reader = read_csv(file_name)
@@ -25,7 +27,13 @@ def write_update(user_name, robot_kind):
             if user == user_name and kind == robot_kind:
                 value += 1
                 writer.writerow({'user_name': user, 'robot_kind': kind, 'count': value})
-                # value = int(3)
-                # writer.writerow({'user_name': user, 'robot_kind': kind, 'count': value})
+                continue
+            else:
+                writer.writerow({'user_name': user, 'robot_kind': kind, 'count': value})
 
+
+user = 'Hitoshi'
+kind = 'Strong'
+count = 1
+# controllers.question.csv_data(user, kind, count)
 # write_update('Yuto', 'Kind')

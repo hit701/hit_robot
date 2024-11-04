@@ -12,30 +12,8 @@ from controllers import count_and_recommend
 from controllers import replace_data
 def main():
     """This ここはMVC modelのViewに相当j"""
-    user_name, robot_kind = question.data_input()
-    if user_name is None or robot_kind is None:
-        print('Thank you')
-        return
-    # elif user_name and robot_kind:
-    #
-    #     question.csv_data(user_name, robot_kind, 1)
-    #     print('Thank you')
-    elif user_name and robot_kind:
-        user, kind, count = count_and_recommend.count()
-        yes_or_no = input(f'We recommend {kind} charactor.  do you like? (Yes/y or No/n) \n')
-        yes_or_no = yes_or_no.lower()
-        if yes_or_no == 'y' or yes_or_no == 'yes':
-            replace_data.write_update(user, kind)
-
-        # user, count = count_and_recommend.recommend(user_name, robot_kind)
-
-        elif yes_or_no == 'n' or yes_or_no == 'no':
-            user, kind = question.data_input()
-            question.csv_data(user, kind, 1)
-            print('Thank you')
-            return
-        else:
-            print('Thank you')
+    question.data_input()
+    print('Thank you for visiting our site! See you again! ')
 
 
 if __name__ == '__main__':
