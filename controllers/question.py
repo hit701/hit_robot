@@ -8,7 +8,7 @@ def data_input():
     if name is None:
         return
     user_name = name.capitalize()
-    name, kind_robot, count = count_and_recommend.count('', '')
+    name, kind_robot, count, update = count_and_recommend.count('', '')
     if kind_robot == '':
         kind_robot = input(f'Hey. {user_name}. What charactor of AI robot would you like? (ex. pretty) \n')
         kind_robot = kind_robot.capitalize()
@@ -20,18 +20,19 @@ def data_input():
         yes_or_no = input(f'We recommend {kind_robot} charactor.  do you like? (Yes/y or No/n) \n')
         yes_or_no = yes_or_no.lower()
         if yes_or_no == 'y' or yes_or_no == 'yes':
-            replace_data.write_update(name, kind_robot)
-            return
+            user, kind, count_value, update = count_and_recommend.recommend(user_name, kind_robot)
+            if update == 1:
+                csv_data(user_name, kind_robot, 1)
+                return
         elif yes_or_no == 'n' or yes_or_no == 'no' or yes_or_no == '':
             kind_robot = input(f'Hey. {user_name}. What charactor of AI robot would you like? (ex. pretty) \n')
             kind_robot = kind_robot.capitalize()
-            user, kind, count = count_and_recommend.recommend(user_name, kind_robot)
-            if count != 0:
+            user, kind, count, update = count_and_recommend.recommend(user_name, kind_robot)
+            if update == 1:
                 csv_data(user_name, kind_robot, 1)
                 return
-            else:
-                replace_data.write_update(user_name, kind_robot)
-                return
+        else:
+            return
         # else:
         #     csv_data(user_name, kind_robot, 1)
         #     return

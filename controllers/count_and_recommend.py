@@ -13,6 +13,7 @@ def recommend(user_name, robot_kind):
             max_count = 0
             max_user = ''
             max_kind = ''
+            update = 1
             for row in reader:
                 user = row['user_name']
                 kind = row['robot_kind']
@@ -20,16 +21,14 @@ def recommend(user_name, robot_kind):
                 count = int(count)
                 if user_name == user and robot_kind == kind:
                     replace_data.write_update(user_name, robot_kind)
+                    update = 0
                     break
-                # elif (user_name != user and robot_kind == kind) or (user_name == user and robot_kind != kind ):
-                #    question.csv_data(user_name, robot_kind, 1)
-                #    break
                 else:
                     if max_count < count:
                         max_count = count
                         max_user = user
                         max_kind = kind
-    return  max_user, max_kind, max_count
+    return  max_user, max_kind, max_count, update
 
 # r = recommend()
 # jprint(r)
@@ -37,9 +36,9 @@ def recommend(user_name, robot_kind):
 def count(user_name, robot_kind):
     """もしcsvファイルがなければ作成し終了する。
     もし、あれば、データからでヘッダーのみを作成してユーザーに返答する。"""
-    recommend_user, recommend_kind, count = recommend(user_name, robot_kind)
+    recommend_user, recommend_kind, count, update = recommend(user_name, robot_kind)
 
-    return recommend_user, recommend_kind, count
+    return recommend_user, recommend_kind, count, update
 
 
 # count()
