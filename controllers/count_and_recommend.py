@@ -1,12 +1,16 @@
 # if user_name and robot_kind has the same, increment count.
 # If there are the highest point, recommend the user_name.
 import csv
-import os
 from controllers import question
+
 from controllers import replace_data
 from dialogue import pretty
+
+
 def recommend(user_name, robot_kind):
     # user_name, robot_kindを分析し、一番頻度の高いuser_nameを提案する
+    # 性格の推薦、user_name, robot_kindが一致した場合のデータの更新
+    # question.py, data_input()にてupdateフラッグを追加。
     with open('../db/robots_data.csv', 'r', newline='') as csv_file:
             reader = csv.DictReader(csv_file)
             # user_name and robot_kindが同じか判定するコードを書く

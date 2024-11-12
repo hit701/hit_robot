@@ -6,6 +6,9 @@ file_name = '../db/robots_data.csv'
 # reader = read_csv(file_name)
 fieldnames = ['user_name', 'robot_kind', 'count']
 
+# 部分的にcountのみを更新したいがseekを使うため保留
+# メモリにデータを一時保存するため、大量データを扱えない。
+# SQLを使うほうが良いかもしれない。
 menu_dic = {}
 def update_csv():
     with open(file_name, 'r', newline='') as csv_file:
